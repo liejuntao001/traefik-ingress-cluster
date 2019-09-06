@@ -82,6 +82,8 @@ metadata:
     k8s-app: traefik-ingress-lb
 spec:
   revisionHistoryLimit: 0
+  updateStrategy:
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -95,7 +97,7 @@ spec:
           secret:
             secretName: traefik-consul
       containers:
-        - image: traefik:v1.7.11-alpine
+        - image: traefik:v1.7.14-alpine
           name: traefik-ingress-lb
           imagePullPolicy: Always
           volumeMounts:
